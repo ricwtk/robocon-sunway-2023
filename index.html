@@ -75,7 +75,7 @@
           </v-card>
           <v-card flat>
             <v-card-text :class="paragraphclass">
-              <img v-for="imgi in imagelist" :key="imgi" :src="getImgUrl(imageids[imgi])" contain height="300px" width="auto" class="mx-1"></img>
+              <img v-for="imgi in imagelist" :key="imgi" :src="getImgUrl(imageids[imgi])" contain height="300px" width="auto" max-width="100%" class="mx-1"></img>
             </v-card-text>
           </v-card>
           <register-now></register-now>
@@ -105,7 +105,7 @@
             <v-card-text :class="paragraphclass">
               You will involve in the design of the robots from the aspects of programming logic, robot mechanisms, 
               interfacing between the mechanism with software control through electronics, etc. You do not have to involve in all of them,
-              but most likely you will need to work in one of those aspects.
+              but most likely you will need to work in at least one of those aspects.
             </v-card-text>
           </v-card>
           <v-card flat>
@@ -136,7 +136,7 @@
         <v-card color="primary" dark class="my-2">
           <v-card-title>
             <v-spacer></v-spacer>
-            Interested? Register now and we will contact you!    
+            Interested? Register now and we will contact you for interview!    
             <v-spacer></v-spacer>
           </v-card-title>
           <v-card-text class="text-center">
