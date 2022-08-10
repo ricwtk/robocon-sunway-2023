@@ -75,9 +75,22 @@
           </v-card>
           <v-card flat>
             <v-card-text :class="paragraphclass">
-              <img v-for="imgi in imagelist" :key="imgi" :src="getImgUrl(imageids[imgi])" contain height="300px" width="auto" max-width="100%" class="mx-1"></img>
+              <v-carousel :continuous="true" :cycle="false">
+                <v-carousel-item v-for="imgi in imagelist" :key="`carou-${imgi}`" :src="getImgUrl(imageids[imgi])">
+                  <v-sheet color="rgba(255, 255, 255, 0.8)" height="100%" style="margin-top:12px" tile>
+                    <v-row class="fill-height" align="center" justify="center">
+                      <v-img :src="getImgUrl(imageids[imgi])" contain height="90%" width="auto"></v-img>
+                    </v-row>
+                  </v-sheet>
+                </v-carousel-item>
+              </v-carousel>
             </v-card-text>
           </v-card>
+          <!-- <v-card flat>
+            <v-card-text :class="paragraphclass">
+              <img v-for="imgi in imagelist" :key="imgi" :src="getImgUrl(imageids[imgi])" contain height="300px" width="auto" max-width="100%" class="mx-1"></img>
+            </v-card-text>
+          </v-card> -->
           <register-now></register-now>
           <v-card flat>
             <v-card-text :class="paragraphclass">
