@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-app-bar app hide-on-scroll dark color="primary">
+        <v-toolbar-title>
+          Robocon Sunway Team 2023
+        </v-toolbar-title>
+      </v-app-bar>
+      <v-main>
+        <v-container style="max-width:1200px">
+          <v-parallax :src="getImgUrl(imageids[0])">
+            <v-row align="center" justify="center">
+              <v-col class="text-center" cols="10" style="background-color: rgba(0, 0, 0, 0.8);border-radius: 1em;">
+                <h1 class="text-h3 font-weight-thin mb-4">
+                  Sunway Team for Robocon 2023 is recruiting!
+                </h1>
+                <h4 class="subheading">
+                  Are you interested in robotics? Are you someone who likes to do hands-on technical work? Do you want to learn more? You might be the one we are looking for!
+                </h4>
+              </v-col>
+            </v-row>
+          </v-parallax>
+          <register-now></register-now>
+          <v-card flat>
+            <v-card-title :class="headerclass">
+              <v-spacer></v-spacer>
+              What is ABU Robocon?
+              <v-btn icon @click="openInNewTab('https://en.wikipedia.org/wiki/ABU_Robocon')" elevation="2" class="ml-4">
+                <v-icon>mdi-wikipedia</v-icon>
+              </v-btn>
+              <v-spacer></v-spacer>
+            </v-card-title>
+            <v-card-text :class="paragraphclass">
+              The ABU Asia-Pasific Robot Contest (ABU Robocon) is an Asian-Oceanian college robot competition, founded in 2002 by Asia-Pacific Broadcasting Union. 
+              Each team builds multiple robots to compete with each other by completing tasks specific to the theme of that year. 
+              Most countries have their own national competition to elect the representative teams to participate in the international competition.
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-title :class="headerclass">
+              <v-spacer></v-spacer>
+              Robocon Malaysia
+              <v-btn icon @click="openInNewTab('https://roboconmalaysia.com/')" elevation="2" class="ml-4"><v-icon>mdi-web</v-icon></v-btn>
+              <v-btn icon @click="openInNewTab('https://www.facebook.com/RoboconMalaysia/')" elevation="2" class="ml-2"><v-icon>mdi-facebook</v-icon></v-btn>
+              <v-spacer></v-spacer>
+            </v-card-title>
+            <v-card-text :class="paragraphclass">
+              Every year the Ministry of Higher Education Malaysia organises the national competition of Robocon to elect the teams to represent Malaysia. 
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-title :class="headerclass">
+              <v-spacer></v-spacer>
+              Robocon Sunway Team: A little of our history
+              <v-spacer></v-spacer>
+            </v-card-title>
+            <v-card-text :class="paragraphclass">
+              Sunway University has participated in Robocon Malaysia in year 2020 and 2022. Robocon Malaysia 2020 was concluded with just the submission of technical reports.
+              We have travelled to USM Penang for the physical competition of Robocon Malaysia 2022.
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-text :class="paragraphclass">
+              <img v-for="imgi in imagelist" :key="imgi" :src="getImgUrl(imageids[imgi])" contain height="300px" width="auto" class="mx-1"></img>
+            </v-card-text>
+          </v-card>
+          <register-now></register-now>
+          <v-card flat>
+            <v-card-text :class="paragraphclass">
+              <iframe :src="videourl" style="width:50%;height:auto;aspect-ratio:16/9" allow="autoplay" allowfullscreen></iframe>
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-title :class="headerclass">
+              <v-spacer></v-spacer>
+              What are we looking for?
+              <v-spacer></v-spacer>
+            </v-card-title>
+            <v-card-text :class="paragraphclass">
+              We are looking for people who are interested with robotics. You may or may not have technical backgrounds, 
+              but willing to pick up hands-on skills to contribute to the robots building process. We will conduct technical workshops to help you
+              to improve on your skills.
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-title :class="headerclass">
+              <v-spacer></v-spacer>
+              What can you look forward to?
+              <v-spacer></v-spacer>
+            </v-card-title>
+            <v-card-text :class="paragraphclass">
+              You will involve in the design of the robots from the aspects of programming logic, robot mechanisms, 
+              interfacing between the mechanism with software control through electronics, etc. You do not have to involve in all of them,
+              but most likely you will need to work in one of those aspects.
+            </v-card-text>
+          </v-card>
+          <v-card flat>
+            <v-card-text>
+              <v-img
+                :src="getImgUrl(posterid)"
+                height="90vh"
+                contain
+              ></v-img>
+            </v-card-text>
+          </v-card>
+          <register-now></register-now>
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    Vue.component('register-now', {
+      methods: {
+        openRegistrationForm: function () { 
+          window.open("https://forms.office.com/Pages/ResponsePage.aspx?id=4St8U9T8qUWDs2ZT6sxQcNyRqlGmCEBOqrZl14yqz_9UNkRUU0gwQU1JRUlJT1UyWkdHR1g1Tk1EWCQlQCN0PWcu", "_blank");
+        }
+      },
+      template: `
+        <v-card color="primary" dark class="my-2">
+          <v-card-title>
+            <v-spacer></v-spacer>
+            Interested? Register now and we will contact you!    
+            <v-spacer></v-spacer>
+          </v-card-title>
+          <v-card-text class="text-center">
+            <v-btn color="primary lighten-4" light @click="openRegistrationForm">Registration form</v-btn>
+          </v-card-text>
+        </v-card>
+      `
+    });
+
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify({
+        theme: {
+          themes: {
+            light: {
+              primary: "#3F51B5"
+            },
+            dark: {
+              primary: "#3F51B5"
+            }
+          }
+        }
+      }),
+      data: {
+        headerclass: "text-h4",
+        paragraphclass: "text-center text-h5 font-weight-light",
+        posterid: '1zrSlsQYn2oVAgNPALUUkTA0rOfn8_mhs',
+        imageids: [
+          "1EzWDoN2sgjFxEXggTyjgJRCBJSiEgjTj",
+          "1vC_cLC0SwuNacT59KHmLWpZVmajAQepd",
+          "17LbIMkgOWcxlUyfF6cago74SRGGvMMqT",
+          "11ma8y9tjK1d6yNiQUZYYP05TrJyWPuxT",
+          "1HnTvbqE93214ImTk1hInxtdsMewPXnuM",
+          "1HnTvbqE93214ImTk1hInxtdsMewPXnuM",
+          "1xDu-JZ5e8bIdi_g2ST7WiyFsh2UcCe5x",
+          "1PWGgfdxSarMuyoJLd9w7r8n2AlCxpXky",
+          "1XCHEiUTlbirzMsDPx3NGNv8nAxNKUApO",
+          "1lUU7NUA5omCVTaVCmXRE_oIqyhsxFPPm",
+          "1I1ZT3qJuHKbLWzXWvw8IELP6YiB-nlcn"          
+        ],
+        imagelist: [1,0,2,3,5,6,7,8,9,10,4],
+        videourl: "https://drive.google.com/file/d/1gpIRlw-pF2Toyrw-X2kS_nmBGD-HbZ9x/preview"
+      },
+      methods: {
+        openInNewTab: function (site) {
+          window.open(site, "_blank");
+        },
+        getImgUrl: function (imageid) {
+          return `https://drive.google.com/uc?export=view&id=${imageid}`;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
