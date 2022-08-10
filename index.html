@@ -75,7 +75,7 @@
           </v-card>
           <v-card flat>
             <v-card-text :class="paragraphclass">
-              <v-carousel :continuous="true" :cycle="false">
+              <v-carousel :continuous="true" :cycle="true">
                 <v-carousel-item v-for="imgi in imagelist" :key="`carou-${imgi}`" :src="getImgUrl(imageids[imgi])">
                   <v-sheet color="rgba(255, 255, 255, 0.8)" height="100%" style="margin-top:12px" tile>
                     <v-row class="fill-height" align="center" justify="center">
